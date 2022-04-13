@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Posts</h1>
+    {% if posts %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>작성자</th>
+                <th>본문</th>
+                <th>게시일</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>{{ post.user.get_username }}</td>
+                <td>{{ post.body }}</td>
+                <td>{{ post.created_at }}</td>
+                <td><a href="/posts/{{ post.id }}">보기</a></td>
+            </tr>
+            {% endfor %}
+            <a href="/posts/new">new</a>
+            <a href='/accounts/detail/ %}'>detail</a>
+            
+        </tbody>
+    </table>
+    <script>
+        const initSqlJs = require('sql.js');
+        var db = openDatabase('db.sqlite3', '1.0', 'my first database', 2 * 1024 * 1024);
+        console.log(db);
+    </script>
+</div>
+{% endif %}
+{% endblock %}

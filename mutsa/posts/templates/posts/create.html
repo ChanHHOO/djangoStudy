@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'posts/style.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>heestagram</title>
+</head>
+
+<body>
+    <h1>Result</h1>
+    <a href="{% url 'posts:index' %}">목록</a>
+    <h1>author</h1>
+    <h2>작성자</h2>
+    <p>{{ post.author }}</p>
+
+
+</body>
+
+</html>

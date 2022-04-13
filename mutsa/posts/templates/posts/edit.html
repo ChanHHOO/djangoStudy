@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Edit Post</h1>
+    <form method="POST" action="{% url 'posts:update' post.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label for="body">Body</label>
+            <textarea name="body" id="body" cols="100" rows="10">{{ post.body }}</textarea>
+        </div>
+        <div class='mb-3 col-md-6'>
+            <label class="form-label" for="image">이미지</label>
+            <input type="file" class="form-control" name="image" id="image">
+        </div>
+        <button class="btn btn-primary" type="submit">수정하기리리</button>
+    </form>
+    <a href="{% url 'posts:index' %}">목록</a>
+</div>
+
+{% endblock %}

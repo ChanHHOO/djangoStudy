@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'posts/style.css' %}">
+{%endblock%}
+
+{% block content %}
+
+  <h2>게시판</h2>
+    {% if posts %}
+      <table class="table table-hover table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th>작성자</th>
+            <th>내용</th>
+            <th>작성시간</th>
+            <th>상세</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for post in posts %}
+            <tr>
+              <td class="col-md-2">{{post.user}}</td>
+              <td class="col-md-5">{{post.body}}</td>
+              <td class="col-md-3">{{post.created_at}}</td>
+              <td class="col-md-1"><a href="{% url 'posts:detail' post.id %}">보기</a></td>
+            </tr>
+          {% endfor%}
+        </tbody>
+      </table>
+    {% else %}
+      <p>게시글이 없습니다.</p>
+    {%endif%}
+  
+    <a class="btn btn-primary btn-sm" href="{% url 'posts:index' %}">홈</a>
+
+    </div>
+
+
+
+
+
+
+
+{% endblock %}
